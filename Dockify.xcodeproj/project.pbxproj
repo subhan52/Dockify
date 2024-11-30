@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5795582CFB70470073657C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0D5795572CFB70470073657C /* FirebaseAuth */; };
+		0D57955A2CFB706A0073657C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0D5795592CFB706A0073657C /* FirebaseAnalytics */; };
 		0D9E10642CF693C300723180 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E10632CF693C300723180 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D9E10642CF693C300723180 /* FirebaseFirestore in Frameworks */,
+				0D5795582CFB70470073657C /* FirebaseAuth in Frameworks */,
+				0D57955A2CFB706A0073657C /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +130,8 @@
 			name = Dockify;
 			packageProductDependencies = (
 				0D9E10632CF693C300723180 /* FirebaseFirestore */,
+				0D5795572CFB70470073657C /* FirebaseAuth */,
+				0D5795592CFB706A0073657C /* FirebaseAnalytics */,
 			);
 			productName = Dockify;
 			productReference = 0DD496A62CF40C930040E0E6 /* Dockify.app */;
@@ -584,6 +590,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0D5795572CFB70470073657C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E10622CF693C300723180 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0D5795592CFB706A0073657C /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E10622CF693C300723180 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		0D9E10632CF693C300723180 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0D9E10622CF693C300723180 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

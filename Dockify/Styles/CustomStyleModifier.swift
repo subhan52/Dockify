@@ -30,6 +30,20 @@ struct TextStyle: ViewModifier {
     }
 }
 
+// Modifier for Text Style
+struct NavigationBarStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(Color("PrimaryColor"))
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.white)
+            .cornerRadius(50.0)
+            .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
+            .padding(.vertical)
+    }
+}
+
 // Modifier for Button Style
 struct ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
@@ -67,5 +81,8 @@ extension View {
     
     func applyButtonStyle() -> some View {
         self.modifier(ButtonStyle())
+    }
+    func applyNavigationStyle() -> some View {
+        self.modifier(NavigationBarStyle())
     }
 }

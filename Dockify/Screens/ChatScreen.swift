@@ -33,6 +33,7 @@ struct ChatScreen: View {
                     .padding(.top, 10)
                     .background(.white)
                 }
+                MessageField()
             }
         }
         .background(Color("Peach"))
