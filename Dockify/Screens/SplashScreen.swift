@@ -6,17 +6,30 @@
 //
 
 import SwiftUI
-
+import Firebase
+import FirebaseCore
+import FirebaseAuth
 struct SplashScreen: View {
     
     @State var isActive : Bool = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    
+    @State private var isLoggedIn = false
+    init() {
+        FirebaseApp.configure() // Initialize Firebase
+    }
+
     // Customise your SplashScreen here
     var body: some View {
         if isActive {
-            WelcomeScreenView()
+            VStack {
+                if isLoggedIn {
+                    AppDockView(isLoggedIn: $isLoggedIn) // Navigate to the main app screen after login
+                } else {
+                    WelcomeScreenView(isLoggedIn: $isLoggedIn) // Pass a binding to update login state
+                }
+                    
+            }
         } else {
             VStack {
                 VStack {
