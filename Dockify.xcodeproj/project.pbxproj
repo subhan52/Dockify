@@ -9,6 +9,28 @@
 /* Begin PBXBuildFile section */
 		0D5795582CFB70470073657C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0D5795572CFB70470073657C /* FirebaseAuth */; };
 		0D57955A2CFB706A0073657C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0D5795592CFB706A0073657C /* FirebaseAnalytics */; };
+		0D57957D2CFCB5810073657C /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795612CFCB5810073657C /* MessageBubble.swift */; };
+		0D57957E2CFCB5810073657C /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795622CFCB5810073657C /* MessageField.swift */; };
+		0D57957F2CFCB5810073657C /* TitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795632CFCB5810073657C /* TitleRow.swift */; };
+		0D5795802CFCB5810073657C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795652CFCB5810073657C /* Message.swift */; };
+		0D5795812CFCB5810073657C /* AppDockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795692CFCB5810073657C /* AppDockView.swift */; };
+		0D5795822CFCB5810073657C /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956A2CFCB5810073657C /* ChatScreen.swift */; };
+		0D5795832CFCB5810073657C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956B2CFCB5810073657C /* HomeScreen.swift */; };
+		0D5795842CFCB5810073657C /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956C2CFCB5810073657C /* MusicPlayerView.swift */; };
+		0D5795852CFCB5810073657C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956D2CFCB5810073657C /* SettingsView.swift */; };
+		0D5795862CFCB5810073657C /* SignInScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956E2CFCB5810073657C /* SignInScreenView.swift */; };
+		0D5795872CFCB5810073657C /* SignUpScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57956F2CFCB5810073657C /* SignUpScreenView.swift */; };
+		0D5795882CFCB5810073657C /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795702CFCB5810073657C /* SplashScreen.swift */; };
+		0D5795892CFCB5810073657C /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795712CFCB5810073657C /* UserProfileView.swift */; };
+		0D57958A2CFCB5810073657C /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795722CFCB5810073657C /* WelcomeScreenView.swift */; };
+		0D57958B2CFCB5810073657C /* CustomStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795742CFCB5810073657C /* CustomStyleModifier.swift */; };
+		0D57958C2CFCB5810073657C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795772CFCB5810073657C /* ContentView.swift */; };
+		0D57958D2CFCB5810073657C /* DockifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795782CFCB5810073657C /* DockifyApp.swift */; };
+		0D57958E2CFCB5810073657C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5795792CFCB5810073657C /* Extensions.swift */; };
+		0D57958F2CFCB5810073657C /* MessagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57957B2CFCB5810073657C /* MessagesManager.swift */; };
+		0D5795902CFCB5810073657C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5795672CFCB5810073657C /* Preview Assets.xcassets */; };
+		0D5795912CFCB5810073657C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5795762CFCB5810073657C /* Assets.xcassets */; };
+		0D5795922CFCB5810073657C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D57957A2CFCB5810073657C /* GoogleService-Info.plist */; };
 		0D9E10642CF693C300723180 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E10632CF693C300723180 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
@@ -30,17 +52,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D5795612CFCB5810073657C /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		0D5795622CFCB5810073657C /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
+		0D5795632CFCB5810073657C /* TitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRow.swift; sourceTree = "<group>"; };
+		0D5795652CFCB5810073657C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0D5795672CFCB5810073657C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0D5795692CFCB5810073657C /* AppDockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDockView.swift; sourceTree = "<group>"; };
+		0D57956A2CFCB5810073657C /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
+		0D57956B2CFCB5810073657C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		0D57956C2CFCB5810073657C /* MusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
+		0D57956D2CFCB5810073657C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0D57956E2CFCB5810073657C /* SignInScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreenView.swift; sourceTree = "<group>"; };
+		0D57956F2CFCB5810073657C /* SignUpScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenView.swift; sourceTree = "<group>"; };
+		0D5795702CFCB5810073657C /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		0D5795712CFCB5810073657C /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		0D5795722CFCB5810073657C /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenView.swift; sourceTree = "<group>"; };
+		0D5795742CFCB5810073657C /* CustomStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleModifier.swift; sourceTree = "<group>"; };
+		0D5795762CFCB5810073657C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D5795772CFCB5810073657C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0D5795782CFCB5810073657C /* DockifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockifyApp.swift; sourceTree = "<group>"; };
+		0D5795792CFCB5810073657C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0D57957A2CFCB5810073657C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0D57957B2CFCB5810073657C /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
 		0DD496A62CF40C930040E0E6 /* Dockify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dockify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD496B62CF40C940040E0E6 /* DockifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD496C02CF40C950040E0E6 /* DockifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DockifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0DD496A82CF40C930040E0E6 /* Dockify */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Dockify;
-			sourceTree = "<group>";
-		};
 		0DD496B92CF40C940040E0E6 /* DockifyTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = DockifyTests;
@@ -81,6 +120,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5795642CFCB5810073657C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795612CFCB5810073657C /* MessageBubble.swift */,
+				0D5795622CFCB5810073657C /* MessageField.swift */,
+				0D5795632CFCB5810073657C /* TitleRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0D5795662CFCB5810073657C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795652CFCB5810073657C /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0D5795682CFCB5810073657C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795672CFCB5810073657C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0D5795732CFCB5810073657C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795692CFCB5810073657C /* AppDockView.swift */,
+				0D57956A2CFCB5810073657C /* ChatScreen.swift */,
+				0D57956B2CFCB5810073657C /* HomeScreen.swift */,
+				0D57956C2CFCB5810073657C /* MusicPlayerView.swift */,
+				0D57956D2CFCB5810073657C /* SettingsView.swift */,
+				0D57956E2CFCB5810073657C /* SignInScreenView.swift */,
+				0D57956F2CFCB5810073657C /* SignUpScreenView.swift */,
+				0D5795702CFCB5810073657C /* SplashScreen.swift */,
+				0D5795712CFCB5810073657C /* UserProfileView.swift */,
+				0D5795722CFCB5810073657C /* WelcomeScreenView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		0D5795752CFCB5810073657C /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795742CFCB5810073657C /* CustomStyleModifier.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		0D57957C2CFCB5810073657C /* Dockify */ = {
+			isa = PBXGroup;
+			children = (
+				0D5795642CFCB5810073657C /* Components */,
+				0D5795662CFCB5810073657C /* Models */,
+				0D5795682CFCB5810073657C /* Preview Content */,
+				0D5795732CFCB5810073657C /* Screens */,
+				0D5795752CFCB5810073657C /* Styles */,
+				0D5795762CFCB5810073657C /* Assets.xcassets */,
+				0D5795772CFCB5810073657C /* ContentView.swift */,
+				0D5795782CFCB5810073657C /* DockifyApp.swift */,
+				0D5795792CFCB5810073657C /* Extensions.swift */,
+				0D57957A2CFCB5810073657C /* GoogleService-Info.plist */,
+				0D57957B2CFCB5810073657C /* MessagesManager.swift */,
+			);
+			path = Dockify;
+			sourceTree = "<group>";
+		};
 		0D9E10652CFA33A800723180 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +199,7 @@
 		0DD4969D2CF40C930040E0E6 = {
 			isa = PBXGroup;
 			children = (
-				0DD496A82CF40C930040E0E6 /* Dockify */,
+				0D57957C2CFCB5810073657C /* Dockify */,
 				0DD496B92CF40C940040E0E6 /* DockifyTests */,
 				0DD496C32CF40C950040E0E6 /* DockifyUITests */,
 				0D9E10652CFA33A800723180 /* Frameworks */,
@@ -123,9 +231,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0DD496A82CF40C930040E0E6 /* Dockify */,
 			);
 			name = Dockify;
 			packageProductDependencies = (
@@ -235,6 +340,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5795902CFCB5810073657C /* Preview Assets.xcassets in Resources */,
+				0D5795912CFCB5810073657C /* Assets.xcassets in Resources */,
+				0D5795922CFCB5810073657C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +367,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D57957D2CFCB5810073657C /* MessageBubble.swift in Sources */,
+				0D57957E2CFCB5810073657C /* MessageField.swift in Sources */,
+				0D57957F2CFCB5810073657C /* TitleRow.swift in Sources */,
+				0D5795802CFCB5810073657C /* Message.swift in Sources */,
+				0D5795812CFCB5810073657C /* AppDockView.swift in Sources */,
+				0D5795822CFCB5810073657C /* ChatScreen.swift in Sources */,
+				0D5795832CFCB5810073657C /* HomeScreen.swift in Sources */,
+				0D5795842CFCB5810073657C /* MusicPlayerView.swift in Sources */,
+				0D5795852CFCB5810073657C /* SettingsView.swift in Sources */,
+				0D5795862CFCB5810073657C /* SignInScreenView.swift in Sources */,
+				0D5795872CFCB5810073657C /* SignUpScreenView.swift in Sources */,
+				0D5795882CFCB5810073657C /* SplashScreen.swift in Sources */,
+				0D5795892CFCB5810073657C /* UserProfileView.swift in Sources */,
+				0D57958A2CFCB5810073657C /* WelcomeScreenView.swift in Sources */,
+				0D57958B2CFCB5810073657C /* CustomStyleModifier.swift in Sources */,
+				0D57958C2CFCB5810073657C /* ContentView.swift in Sources */,
+				0D57958D2CFCB5810073657C /* DockifyApp.swift in Sources */,
+				0D57958E2CFCB5810073657C /* Extensions.swift in Sources */,
+				0D57958F2CFCB5810073657C /* MessagesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
