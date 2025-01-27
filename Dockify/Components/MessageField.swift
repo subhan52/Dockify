@@ -1,23 +1,24 @@
-//
-//  MessageField.swift
-//  Dockify
-//
-//  Created by Mohd Abdul Subhan on 11/30/24.
 import SwiftUI
+import FirebaseAuth
 
 struct MessageField: View {
     @State private var message = ""
+    
+    // Receiver's information (passed as parameters to the view)
+    var receiverId: String
+    var receiverName: String
+    var onMessageSent: (String) -> Void // Closure to handle sending the message
 
     var body: some View {
         HStack {
-            // Custom text field created below
+            // Custom text field for entering the message
             CustomTextField(placeholder: Text("Enter your message here"), text: $message)
                 .frame(height: 52)
                 .disableAutocorrection(true)
 
             Button {
-                sendMessage()
-                message = ""
+                onMessageSent(message) // Call the sendMessage function from parent view
+                message = "" // Clear message after sending
             } label: {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.white)
@@ -28,18 +29,16 @@ struct MessageField: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
-        .background(Color("Gray"))
+        .background(Color("CustomGray"))
         .cornerRadius(50)
         .padding()
     }
 }
 
 #Preview{
-    MessageField()
-}
-
-func sendMessage(){
-    
+    MessageField(receiverId: "someReceiverId", receiverName: "John Doe") { message in
+        print("Message sent: \(message)")
+    }
 }
 
 struct CustomTextField: View {
@@ -50,12 +49,12 @@ struct CustomTextField: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            // If text is empty, show the placeholder on top of the TextField
             if text.isEmpty {
                 placeholder
-                .opacity(0.5)
+                    .opacity(0.5)
             }
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
         }
     }
 }
+

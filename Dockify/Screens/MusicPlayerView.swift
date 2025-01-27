@@ -2,7 +2,7 @@
 //  MusicPlayerView.swift
 //  App_Duck
 //
-//  Created by Bibhu Basnet on 11/26/24.
+//  Created by Subhan on 11/26/24.
 //
 
 import SwiftUI

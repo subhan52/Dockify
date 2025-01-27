@@ -1,13 +1,13 @@
 //
-//  DockifyUITests.swift
-//  DockifyUITests
+//  App_DuckUITests.swift
+//  App_DuckUITests
 //
-//  Created by Mohd Abdul Subhan on 11/24/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import XCTest
 
-final class DockifyUITests: XCTestCase {
+final class App_DuckUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

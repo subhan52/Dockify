@@ -1,11 +1,15 @@
 //
 //  TitleRow.swift
+//  App_Duck
+//
+//  Created by Subhan on 12/7/24.
+//
 
 import SwiftUI
 
 struct TitleRow: View {
     var imageUrl = URL(string: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-    var name = "Exmple Username"
+    var name = "Group"
     
     var body: some View {
         HStack(spacing: 20) {

@@ -1,18 +1,22 @@
-import FirebaseAuth
-import FirebaseFirestore
 //
 //  SignInScreenView.swift
-//  login
+//  App_Duck
+//
+//  Created by Subhan on 12/7/24.
+//
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 
 struct SignInScreenView: View {
     @Binding var isLoggedIn: Bool
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var errorMessage = ""// by default it's empty
+    @State private var errorMessage = "" // By default it's empty
+    
     var body: some View {
         ZStack {
-            Color("BgColor").edgesIgnoringSafeArea(.all)
+            Color("CustomGray").edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
 
@@ -23,15 +27,13 @@ struct SignInScreenView: View {
                         .padding(.bottom, 30)
 
                     SocalLoginButton(
-                        image: Image(
-                            uiImage: #imageLiteral(resourceName: "apple")),
-                        text: Text("Sign in with Apple"))
+                        image: Image(uiImage: #imageLiteral(resourceName: "apple")),
+                        text: Text("Sign in with Apple")
+                    )
 
                     SocalLoginButton(
-                        image: Image(
-                            uiImage: #imageLiteral(resourceName: "google")),
-                        text: Text("Sign in with Google").foregroundColor(
-                            Color("PrimaryColor"))
+                        image: Image(uiImage: #imageLiteral(resourceName: "google")),
+                        text: Text("Sign in with Google").foregroundColor(Color("CustomPrimaryColor"))
                     )
                     .padding(.vertical)
 
@@ -39,22 +41,20 @@ struct SignInScreenView: View {
 
                     TextField("Email address", text: $email)
                         .applyInputStyle()
-                    TextField("password", text: $password)
+                        .keyboardType(.emailAddress) // Optimized for email entry
+                        .autocapitalization(.none) // Starts with lowercase input
+                    
+                    SecureField("Password", text: $password) // Masks password input
                         .applyInputStyle()
+                        .autocapitalization(.none) // Starts with lowercase input
+                        .textContentType(.password) // Helps with autofill and password management
                         .padding(.bottom)
-                    Button(action: {signIn()}){
+
+                    Button(action: { signIn() }) {
                         Text("Sign In")
                             .applyButtonStyle()
                     }
-//                    NavigationLink(
-//                        destination: ChatScreen(),
-//                        label: {
-//                            Text("Sign In")
-//                                .font(.title3).applyButtonStyle()
-//                        }
-//                    )
-                    .navigationBarHidden(false)
-
+                    .navigationBarBackButtonHidden(true) // Hide back button in SignInScreenView
                 }
 
                 Spacer()
@@ -62,13 +62,13 @@ struct SignInScreenView: View {
                 Spacer()
                 Text("You are completely safe.")
                 Text("Read our Terms & Conditions.")
-                    .foregroundColor(Color("PrimaryColor"))
+                    .foregroundColor(Color("CustomPrimaryColor"))
                 Spacer()
-
             }
             .padding()
         }
     }
+
     // MARK: - Sign-In Logic
     private func signIn() {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -106,7 +106,9 @@ struct SocalLoginButton: View {
         .background(Color.white)
         .cornerRadius(50.0)
         .shadow(
-            color: Color.black.opacity(0.08), radius: 60,
-            x: /*@START_MENU_TOKEN@*/ 0.0 /*@END_MENU_TOKEN@*/, y: 16)
+            color: Color.black.opacity(0.08),
+            radius: 60,
+            x: 0.0, y: 16
+        )
     }
 }

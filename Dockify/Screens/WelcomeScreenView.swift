@@ -1,19 +1,24 @@
 //
 //  WelcomeScreenView.swift
-//  login
+//  App_Duck
+//
+//  Created by Subhan on 12/7/24.
 //
 import SwiftUI
+import FirebaseAuth
+import Firebase
 
 struct WelcomeScreenView: View {
     @Binding var isLoggedIn: Bool
     var body: some View {
-        NavigationView {
+        NavigationStack { // Use NavigationStack instead of NavigationView
             ZStack {
                 Color("BgColor").edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
                     Image(uiImage: #imageLiteral(resourceName: "onboard"))
                     Spacer()
+
                     NavigationLink(
                         destination: SignInScreenView(isLoggedIn: $isLoggedIn),
                         label: {
@@ -23,15 +28,15 @@ struct WelcomeScreenView: View {
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color("PrimaryColor"))
+                                .background(Color("CustomPrimaryColor"))
                                 .cornerRadius(50)
                                 .shadow(
                                     color: Color.black.opacity(0.08),
                                     radius: 60, x: 0.0, y: 16)
-
                         }
                     )
-                    .navigationBarHidden(true)
+                    .navigationBarHidden(true) // Hide back button
+
                     Text("Already have an account?")
                     NavigationLink(
                         destination: SignInScreenView(isLoggedIn: $isLoggedIn),
@@ -39,7 +44,7 @@ struct WelcomeScreenView: View {
                             Text("Sign In")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                                .foregroundColor(Color("PrimaryColor"))
+                                .foregroundColor(Color("CustomPrimaryColor"))
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color.white)
@@ -51,7 +56,7 @@ struct WelcomeScreenView: View {
                                 .padding(.vertical)
                         }
                     )
-                    .navigationBarHidden(true)
+                    .navigationBarHidden(true) // Hide back button
 
                     HStack {
                         Text("New around here? ")
@@ -59,7 +64,7 @@ struct WelcomeScreenView: View {
                             destination: SignUpScreenView(isLoggedIn: .constant(false)),
                             label: {
                                 Text("Create an account").foregroundColor(
-                                    Color("PrimaryColor"))
+                                    Color("CustomPrimaryColor"))
                             })
                     }
                 }

@@ -1,13 +1,13 @@
 //
 //  SignUpScreenView.swift
-//  Dockify
+//  App_Duck
 //
-//  Created by Mohd Abdul Subhan on 11/30/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import SwiftUI
-import FirebaseFirestore
 import FirebaseAuth
+import FirebaseFirestore
 
 struct SignUpScreenView: View {
     @Binding var isLoggedIn: Bool // Binding to update login state in the parent view
@@ -15,56 +15,76 @@ struct SignUpScreenView: View {
     @State private var lastName = ""  // Last Name Field
     @State private var email = ""
     @State private var password = ""
-    @State private var confirmPassword = "" // New state for confirm password
-    @State private var isSignUp = false
-    @State private var errorMessage = ""// by default it's empty
-    var body: some View {
-        ZStack {
-            Color("BgColor").edgesIgnoringSafeArea(.all)
-            VStack {
-                Spacer()
+    @State private var confirmPassword = "" // Confirm Password Field
+    @State private var errorMessage = "" // Error Message
+    @State private var isProcessing = false // Prevent multiple taps
+    @State private var showSuccessAlert = false // State to trigger success alert
 
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color("BgColor").edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("Sign Up")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 30)
-                    TextField("First Name", text: $firstName)
-                        .applyInputStyle()
-                    TextField("Last Name", text: $lastName)
-                        .applyInputStyle()
-                    TextField("Email address", text: $email)
-                        .applyInputStyle()
-                    SecureField("Password", text: $password).applyInputStyle()
-                    SecureField("Confirm Password",text: $confirmPassword).applyInputStyle()
-                    if !errorMessage.isEmpty {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 10)
-                    }
-                    NavigationLink(
-                        destination: ChatScreen(),
-                        label: {
+                    Spacer()
+
+                    VStack {
+                        Text("Sign Up")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 30)
+
+                        TextField("First Name", text: $firstName)
+                            .applyInputStyle()
+                        TextField("Last Name", text: $lastName)
+                            .applyInputStyle()
+                        TextField("Email address", text: $email)
+                            .applyInputStyle()
+                        SecureField("Password", text: $password)
+                            .applyInputStyle()
+                        SecureField("Confirm Password", text: $confirmPassword)
+                            .applyInputStyle()
+
+                        if !errorMessage.isEmpty {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 10)
+                        }
+
+                        Button(action: {
+                            signUp()
+                        }) {
                             Text("Sign Up")
-                                .font(.title3).applyButtonStyle().padding()
+                                .font(.title3)
+                                .applyButtonStyle()
+                                .padding()
+                        }
+                        .disabled(isProcessing) // Disable when processing
+                    }
+
+                    Spacer()
+                    Divider()
+                    Spacer()
+                    Text("You are completely safe.")
+                    Text("Read our Terms & Conditions.")
+                        .foregroundColor(Color("CustomPrimaryColor"))
+                    Spacer()
+                }
+                .padding()
+                .alert(isPresented: $showSuccessAlert) {
+                    Alert(
+                        title: Text("Success!"),
+                        message: Text("Sign Up Successful! Please Login."),
+                        dismissButton: .default(Text("OK")) {
+                            // Navigate to login after dismissing the alert
+                            isLoggedIn = true
                         }
                     )
-                    .navigationBarHidden(false)
                 }
-
-                Spacer()
-                Divider()
-                Spacer()
-                Text("You are completely safe.")
-                Text("Read our Terms & Conditions.")
-                    .foregroundColor(Color("PrimaryColor"))
-                Spacer()
-
             }
-            .padding()
         }
     }
+
     // MARK: - Clear Fields
     private func clearFields() {
         firstName = ""
@@ -74,20 +94,22 @@ struct SignUpScreenView: View {
         confirmPassword = ""
         errorMessage = ""
     }
-    
+
     // MARK: - Sign-Up Logic
     private func signUp() {
+        isProcessing = true
+
         if password != confirmPassword {
             self.errorMessage = "Passwords do not match!"
+            isProcessing = false
             return
         }
-
-        // Create user in Firebase Auth
+// this creates a user with email and password
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
+                self.isProcessing = false
             } else if let uid = authResult?.user.uid {
-                // Save additional user data to Firestore
                 let db = Firestore.firestore()
                 db.collection("users").document(uid).setData([
                     "firstName": self.firstName,
@@ -96,16 +118,20 @@ struct SignUpScreenView: View {
                 ]) { error in
                     if let error = error {
                         self.errorMessage = error.localizedDescription
+                        self.isProcessing = false
                     } else {
-                        self.clearFields()
-                        self.errorMessage = "Sign Up Successful! Please Login."
-                        isSignUp = false
+                        DispatchQueue.main.async {
+                            self.clearFields()
+                            self.showSuccessAlert = true // Trigger the alert
+                        }
+                        self.isProcessing = false
                     }
                 }
             }
         }
     }
 }
+
 #Preview {
     SignUpScreenView(isLoggedIn: .constant(false))
 }

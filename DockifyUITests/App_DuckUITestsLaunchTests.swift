@@ -1,13 +1,13 @@
 //
-//  DockifyUITestsLaunchTests.swift
-//  DockifyUITests
+//  App_DuckUITestsLaunchTests.swift
+//  App_DuckUITests
 //
-//  Created by Mohd Abdul Subhan on 11/24/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import XCTest
 
-final class DockifyUITestsLaunchTests: XCTestCase {
+final class App_DuckUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

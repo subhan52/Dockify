@@ -2,7 +2,7 @@
 //  UserProfileView.swift
 //  App_Duck
 //
-//  Created by Bibhu Basnet on 11/26/24.
+//  Created by Subhan on 11/26/24.
 //
 
 import SwiftUI
@@ -10,17 +10,22 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct UserProfileView: View {
-    @State private var firstName: String = "Loading..."
-    @State private var lastName: String = "Loading..."
-    @State private var email: String = "Loading..."
+    @State private var firstName: String = "John"
+    @State private var lastName: String = "Doe"
+    @State private var email: String = "john.doe@example.com"
+    @State private var avatarName: String = "avatar1" // Default avatar
     @State private var isEditing: Bool = false
+    @State private var showAvatarPicker = false
+
+    // Explicitly list avatars
+    let avatars = ["avatar1", "avatar2", "avatar3", "avatar4", "avatar5"]
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Profile Picture Section (Static)
-                    Image(systemName: "person.crop.circle.fill") // Default placeholder
+                    // Profile Picture Section
+                    Image(avatarName)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 120, height: 120)
@@ -28,6 +33,9 @@ struct UserProfileView: View {
                         .overlay(Circle().stroke(Color.gray, lineWidth: 2))
                         .shadow(radius: 5)
                         .padding()
+                        .onTapGesture {
+                            showAvatarPicker = true // Open avatar picker
+                        }
 
                     // Profile Information
                     VStack(spacing: 15) {
@@ -57,10 +65,13 @@ struct UserProfileView: View {
             }
             .navigationTitle("User Profile")
             .onAppear(perform: fetchProfile)
+            .sheet(isPresented: $showAvatarPicker) {
+                AvatarPicker(selectedAvatar: $avatarName, showPicker: $showAvatarPicker, avatars: avatars)
+            }
         }
     }
 
-    private func fetchProfile() {
+    public func fetchProfile() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let db = Firestore.firestore()
 
@@ -69,6 +80,7 @@ struct UserProfileView: View {
                 self.firstName = data["firstName"] as? String ?? "No First Name"
                 self.lastName = data["lastName"] as? String ?? "No Last Name"
                 self.email = data["email"] as? String ?? "No Email"
+                self.avatarName = data["avatarName"] as? String ?? "avatar1" // Load avatar from Firestore
             }
         }
     }
@@ -79,13 +91,45 @@ struct UserProfileView: View {
 
         db.collection("users").document(uid).updateData([
             "firstName": self.firstName,
-            "lastName": self.lastName
+            "lastName": self.lastName,
+            "avatarName": self.avatarName // Save selected avatar
         ]) { error in
             if let error = error {
                 print("Failed to update profile: \(error.localizedDescription)")
             } else {
                 print("Profile updated successfully")
             }
+        }
+    }
+}
+
+struct AvatarPicker: View {
+    @Binding var selectedAvatar: String
+    @Binding var showPicker: Bool // To dismiss the picker after selection
+    let avatars: [String]
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 20) {
+                    ForEach(avatars, id: \.self) { avatar in
+                        VStack {
+                            Image(avatar)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                                .shadow(radius: 5)
+                                .onTapGesture {
+                                    selectedAvatar = avatar // Update selected avatar
+                                    showPicker = false // Dismiss picker after selection
+                                }
+                        }
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Choose Avatar")
         }
     }
 }

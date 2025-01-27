@@ -1,15 +1,15 @@
 //
 //  CustomStyleModifier.swift
-//  Dockify
+//  App_Duck
 //
-//  Created by Mohd Abdul Subhan on 11/26/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import SwiftUI
 
 struct CustomStyleModifier: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).applyInputStyle()
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).applyNavigationStyle()
     }
 }
 
@@ -34,7 +34,7 @@ struct TextStyle: ViewModifier {
 struct NavigationBarStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(Color("PrimaryColor"))
+            .foregroundColor(Color("CustomPrimaryColor"))
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.white)

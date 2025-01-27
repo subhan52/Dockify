@@ -1,45 +1,103 @@
 //
 //  ChatScreen.swift
-//  Dockify
+//  App_Duck
 //
-//  Created by Mohd Abdul Subhan on 11/26/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ChatScreen: View {
-    let messages: [Message] = [
-          Message(id: "1", text: "Hey! How's it going?", received: false, timestamp: Date()),
-          Message(id: "2", text: "Hey! I'm good, how about you?", received: true, timestamp: Date()),
-          Message(id: "3", text: "I'm doing well, thanks for asking!", received: false, timestamp: Date()),
-          Message(id: "4", text: "That's great! What have you been up to?", received: true, timestamp: Date()),
-          Message(id: "5", text: "Not much, just working on some projects. How about you?", received: false, timestamp: Date()),
-          Message(id: "6", text: "Same here, just finishing some work before the weekend.", received: true, timestamp: Date())
-      ]
+    @EnvironmentObject var firebaseService: FirebaseService  // Inject FirebaseService using @EnvironmentObject
+    
+    @State private var messages: [Message] = []
+    @State private var newMessage = ""
+    
+    var receiverId: String
+    var receiverName: String
+    private var senderId: String {
+        Auth.auth().currentUser?.uid ?? ""
+    }
+    
+    private var senderName: String {
+        Auth.auth().currentUser?.displayName ?? "Unknown User"
+    }
+    
+    // Fetch messages from Firebase when the view appears
+    func fetchMessages() {
+        firebaseService.fetchMessages(for: senderId) { fetchedMessages, error in
+            if let error = error {
+                print("Error fetching messages: \(error.localizedDescription)")
+                return
+            }
+            if let fetchedMessages = fetchedMessages {
+                self.messages = fetchedMessages
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             VStack {
                 TitleRow()
                 
+                // ScrollView to display messages
                 ScrollViewReader { proxy in
                     ScrollView {
-                        // scrol through message array
-                        ForEach(messages) { message in
-                                        MessageBubble(message: message)
-                                            .padding(.bottom, 10)
-                                    }
-                        MessageBubble(message: Message (id:"12345", text: "skjbd", received: true, timestamp: Date.now ))
+                        ForEach(messages.reversed()) { message in
+                            MessageBubble(message: message)
+                                .padding(.bottom, 10)
+                        }
                     }
                     .padding(.top, 10)
-                    .background(.white)
+                    .background(Color.white)
+                    .onAppear {
+                        fetchMessages() // Fetch messages when the screen appears
+                    }
                 }
-                MessageField()
+                
+                // Message input field and send button
+                MessageField(
+                    receiverId: receiverId,
+                    receiverName: receiverName,
+                    onMessageSent: { content in
+                        sendMessage(content: content)
+                    }
+                )
+                .environmentObject(firebaseService)  // Pass FirebaseService down to the MessageField
             }
         }
         .background(Color("Peach"))
-}
+    }
+    
+    // Send the message
+    func sendMessage(content: String) {
+        guard !content.isEmpty else { return }
+        
+        // Create a new message object
+        let newMessageObj = Message(
+            senderId: senderId,
+            receiverId: receiverId,
+            content: content,
+            senderName: senderName,
+            receiverName: receiverName
+        )
+        
+        // Send message using FirebaseService
+        firebaseService.sendMessage(newMessageObj) { error in
+            if let error = error {
+                print("Error sending message: \(error.localizedDescription)")
+            } else {
+                print("Message sent successfully!")
+                fetchMessages() // Reload messages after sending
+            }
+        }
+    }
 }
 
 #Preview {
-    ChatScreen()
+    ChatScreen(receiverId: "receiver123", receiverName: "Jane Doe")
+        .environmentObject(FirebaseService())  // Ensure FirebaseService is injected in the Preview
 }
+

@@ -2,15 +2,17 @@
 //  SettingsView.swift
 //  App_Duck
 //
-//  Created by Bibhu Basnet on 11/26/24.
+//  Created by Subhan on 11/26/24.
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SettingsView: View {
     @State private var isDarkMode = false // Theme toggle
     @State private var notificationsEnabled = true // Notification toggle
     @State private var isLoggedOut = false // For logout action
+    @Binding var isLoggedIn: Bool
 
     var body: some View {
         NavigationView {
@@ -35,6 +37,9 @@ struct SettingsView: View {
                 Section(header: Text("Account Settings")) {
                     NavigationLink(destination: AccountSettingsView()) {
                         Text("Manage Account")
+                    }
+                    NavigationLink(destination: UserListView()){
+                        Text("Users List")
                     }
                 }
 
@@ -65,6 +70,13 @@ struct SettingsView: View {
                 message: Text("Are you sure you want to log out?"),
                 primaryButton: .destructive(Text("Log Out")) {
                     // Handle logout functionality here
+                    isLoggedIn = false // Set isLoggedIn to false to log out
+                    do {
+                                try Auth.auth().signOut() // Sign out from Firebase
+                                isLoggedIn = false // Update the login status
+                            } catch {
+                                print("Error signing out: \(error.localizedDescription)")
+                            }
                     print("User logged out")
                 },
                 secondaryButton: .cancel()
@@ -103,4 +115,6 @@ struct AppInformationView: View {
         .navigationBarTitle("App Info", displayMode: .inline)
     }
 }
-
+#Preview {
+    SettingsView(isLoggedIn: .constant(true))
+}

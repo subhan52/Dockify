@@ -1,8 +1,8 @@
 //
 //  Extensions.swift
-//  Dockify
+//  App_Duck
 //
-//  Created by Mohd Abdul Subhan on 11/29/24.
+//  Created by Subhan on 12/7/24.
 //
 
 import Foundation

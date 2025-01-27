@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Dockify
+//  App_Duck
 //
-//  Created by Mohd Abdul Subhan on 11/24/24.
+//  Created by Subhan on 11/26/24.
 //
 
 import SwiftUI
